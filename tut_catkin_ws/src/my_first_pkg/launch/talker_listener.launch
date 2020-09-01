@@ -1,0 +1,6 @@
+<launch>
+    <node name="talker_node_tutorial" pkg="my_first_pkg" type="talker_node" ns = "tutorial"/>
+    <node name="listener_node_tutorial" pkg="my_first_pkg" type="listener_node" output="screen" ns ="tutorial"/>
+    <node name="talker_node_tutorial" pkg="my_first_pkg" type="talker_node" ns = "tutorial_second"/>
+    <node name="listener_node_tutorial" pkg="my_first_pkg" type="listener_node" output="screen" ns ="tutorial_second"/>
+</launch>
