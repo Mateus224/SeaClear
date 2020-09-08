@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: gazebo_plugin
+Description: Description of gazebo_plugin
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: roscpp gazebo_ros

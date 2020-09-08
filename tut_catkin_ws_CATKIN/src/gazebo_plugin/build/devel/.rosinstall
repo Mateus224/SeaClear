@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/mateus/seaclear/tut_catkin_ws_CATKIN/src/gazebo_plugin/build/devel/setup.sh
