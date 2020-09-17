@@ -1,19 +1,19 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(my_pcl_tutorial)
+project(gis_to_pcl)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
 
-## set(PCL_DIR "/usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake")
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
+  pcl_conversions
   pcl_ros
   roscpp
   sensor_msgs
+  std_msgs 
 )
-
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 find_package(pcl REQUIRED)
@@ -156,6 +156,7 @@ include_directories(
 add_executable(pointCloud_SubPub src/pointCloud_SubPub.cpp)
 target_link_libraries(pointCloud_SubPub ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
+
 #############
 ## Install ##
 #############
@@ -169,6 +170,10 @@ target_link_libraries(pointCloud_SubPub ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 #   scripts/my_python_script
 #   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 # )
+catkin_install_python(PROGRAMS src_python/preprocess.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
 
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html

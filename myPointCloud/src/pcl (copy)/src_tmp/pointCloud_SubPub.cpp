@@ -16,9 +16,11 @@ int main(int argc, char** argv)
 
   PointCloud::Ptr msg (new PointCloud);
   msg->header.frame_id = "/some_tf_frame";
-  msg->height = msg->width = 1;
-  msg->points.push_back (pcl::PointXYZ(1.0, 2.0, 3.0));
-
+  msg->height = 1;
+  msg->width = 10;
+  for(float i=0; i<10; i++){
+  msg->points.push_back (pcl::PointXYZ(i, 2.0, 3.0));
+  }
   ros::Rate loop_rate(4);
   while (nh.ok())
   {
