@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 import csv
 import rospy
+import math
+import sys
+
+from sensor_msgs.msg import PointCloud2
 import std_msgs.msg
-from std_msgs.msg import Float64MultiArray
-from std_msgs.msg import MultiArrayDimension
-from geometry_msgs.msg import Point32
-from sensor_msgs.msg import PointCloud
+import sensor_msgs.point_cloud2 as pcl2
 import numpy as np
 
 class Publisher:
@@ -21,21 +22,23 @@ class Publisher:
 
     def dataset(array):
         rospy.init_node('reader', anonymous=True)
-        pub = rospy.Publisher('/points', PointCloud, queue_size=1)
+        pub = rospy.Publisher('/points', PointCloud2, queue_size=1)
         #giving some time for the publisher to register
         rospy.sleep(0.5)
-        pointcloud = PointCloud()
         header = std_msgs.msg.Header()
         header.stamp = rospy.Time.now()
         header.frame_id = "pointcloud"
-        pointcloud.header = header
+        array_= []
+        for point in range(array.shape[0]):
+        #array_.append([1,1,1])
+            array_.append([array[point][0]-886810,array[point][1]-6254020,array[point][2]+4])
+        scaled_polygon_pcl = pcl2.create_cloud_xyz32(header, array_)
         rate = rospy.Rate(0.1) # 1hz
         print(array.shape[0])
-        for point in range(array.shape[0]):
-            pointcloud.points.append(Point32(array[point][0]-886861,array[point][1]-6254020,array[point][2]))
+
         while not rospy.is_shutdown():
             rospy.loginfo("sending")
-            pub.publish(pointcloud)
+            pub.publish(scaled_polygon_pcl)
             rate.sleep()
 
 

@@ -17,6 +17,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 find_package(pcl REQUIRED)
+find_package(octomap REQUIRED)
+
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -121,6 +123,7 @@ include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
   ${PCL_INCLUDE_DIRS}
+  ${OCTOMAP_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -154,7 +157,7 @@ include_directories(
 # )
 
 add_executable(pointCloud_SubPub src/pointCloud_SubPub.cpp)
-target_link_libraries(pointCloud_SubPub ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+target_link_libraries(pointCloud_SubPub ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OCTOMAP_LIBRARIES})
 
 
 #############
