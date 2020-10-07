@@ -1,2 +1,2 @@
 # SeaClear
-This Repo is part of the SeaClear project which will be later integrated into the main Repo.
+This is a test Repo for the SeaClear Project
