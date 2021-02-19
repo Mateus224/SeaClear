@@ -155,6 +155,7 @@ main (int argc, char** argv)
 void pointsCallback(const sensor_msgs::PointCloud2ConstPtr& msg)
 {
 //********* Retirive and process raw pointcloud************
+/*
         std::cout<<"Recieved cloud"<<msg<<std::endl;
         std::cout<<"Create Octomap"<<std::endl;
         float a=01;
@@ -179,7 +180,7 @@ void pointsCallback(const sensor_msgs::PointCloud2ConstPtr& msg)
                 oct_pc.push_back((float) pcl_pc.points[i].x,(float) pcl_pc.points[i].y,(float) pcl_pc.points[i].z);
 }
         tree.insertPointCloud(oct_pc,origin,-1,false,false);
-        /*
+        
         */
 
         /*
